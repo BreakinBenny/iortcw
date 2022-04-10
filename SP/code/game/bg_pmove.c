@@ -1314,20 +1314,15 @@ static void PM_CrashLand( void ) {
 			PM_AddFallEvent( EV_FALL_NDIE, pml.groundTrace.surfaceFlags );
 		} else if ( delta > 67 ) {
 			PM_AddFallEvent( EV_FALL_DMG_50, pml.groundTrace.surfaceFlags );
-		} else if ( delta > 58 ) {
-			// this is a pain grunt, so don't play it if dead
-			if ( pm->ps->stats[STAT_HEALTH] > 0 ) {
-				PM_AddFallEvent( EV_FALL_DMG_25, pml.groundTrace.surfaceFlags );
-			}
-		} else if ( delta > 48 ) {
-			// this is a pain grunt, so don't play it if dead
-			if ( pm->ps->stats[STAT_HEALTH] > 0 ) {
-				PM_AddFallEvent( EV_FALL_DMG_15, pml.groundTrace.surfaceFlags );
-			}
 		} else if ( delta > 38.75 ) {
-			// this is a pain grunt, so don't play it if dead
+			// these are pain grunts, so don't play any if dead
 			if ( pm->ps->stats[STAT_HEALTH] > 0 ) {
-				PM_AddFallEvent( EV_FALL_DMG_10, pml.groundTrace.surfaceFlags );
+				if ( delta > 58 )
+					PM_AddFallEvent( EV_FALL_DMG_25, pml.groundTrace.surfaceFlags );
+				else if ( delta > 48 )
+					PM_AddFallEvent( EV_FALL_DMG_15, pml.groundTrace.surfaceFlags );
+				else
+					PM_AddFallEvent( EV_FALL_DMG_10, pml.groundTrace.surfaceFlags );
 			}
 		} else if ( delta > 7 ) {
 			PM_AddFallEvent( EV_FALL_SHORT, pml.groundTrace.surfaceFlags );
