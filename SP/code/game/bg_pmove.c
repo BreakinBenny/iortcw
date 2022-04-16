@@ -1257,7 +1257,7 @@ static void PM_CrashLand( void ) {
 //----(SA)	end
 
 		if(delta > 38.75) {
-			// check that player's alive before playing paint grunts
+			// check that player's alive before playing pain grunts
 			if (pm->ps->stats[STAT_HEALTH] > 0) {
 				if(delta > 48)
 					PM_AddFallEvent(EV_FALL_DMG_15, pml.groundTrace.surfaceFlags);
@@ -1272,9 +1272,9 @@ static void PM_CrashLand( void ) {
 			}
 		} else if(delta > 7) && (delta < 49)
 			PM_AddFallEvent(EV_FALL_SHORT, pml.groundTrace.surfaceFlags);
-		} else {
-			if(!(pm->ps->pm_flags & PMF_DUCKED) && !(pm->cmd.buttons & BUTTON_WALKING))	// quiet if crouching or walking
-				PM_AddFallEvent( PM_FootstepForSurface(), pml.groundTrace.surfaceFlags );
+    else {
+			if(!(pm->ps->pm_flags & PMF_DUCKED) && !(pm->cmd.buttons & BUTTON_WALKING)) // quiet if crouching or walking
+				PM_AddFallEvent(PM_FootstepForSurface(), pml.groundTrace.surfaceFlags);
 		}
 	}
 
